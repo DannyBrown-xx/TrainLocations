@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-const exphbs  = require('express-handlebars');
+const exphbs = require('express-handlebars');
 const http = require('http');
 const socketIO = require('socket.io');
 const helpers = require('./views/handlebars-helpers.js');
@@ -14,7 +14,7 @@ app.engine('handlebars', exphbs({
 app.set('view engine', 'handlebars');
 
 const server = http.Server(app);
-const port = 8080;
+const port = process.env.PORT || 3000;
 server.listen(port, () => {
   console.log(`Listening on port ${port}`)
 });
