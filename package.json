@@ -1,0 +1,18 @@
+{
+  "name": "trainlocation",
+  "version": "1.0.0",
+  "description": "Find the location of trains",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.13.3",
+    "express-handlebars": "^2.0.1",
+    "socket.io": "^1.3.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}

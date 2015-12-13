@@ -1,0 +1,29 @@
+<div id="map" style="height:100%"></div>
+<script>
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 8,
+    center: {lat: 52.193934, lng: 0.137388},
+    mapTypeId: google.maps.MapTypeId.TERRAIN
+  });
+
+  var trainCoords = null;
+  var trainPath = null;
+
+  {{#each trainLocations}}
+    trainCoords = {{{json this}}}
+
+    trainPath = new google.maps.Polyline({
+      path: flightPlanCoordinates,
+      geodesic: true,
+      strokeColor: '#'+Math.floor(Math.random()*16777215).toString(16),
+      strokeOpacity: 1.0,
+      strokeWeight: 2
+    });
+
+    trainPath.setMap(map);
+  {{/each}}
+}
+
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoKKlXrMPo085aO1OCFsiqYH03ywmUibA&signed_in=true&callback=initMap"></script>
