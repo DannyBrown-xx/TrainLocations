@@ -62,7 +62,7 @@ io.on('connection', socket => {
 
   socket.on('location-update', message => {
     trainCounter.add(message.headCode, {lat:message.location.latitude, lng:message.location.longitude});
-    console.log(`Train (head code ${message.headCode}) is at location: (${message.location.latitude}, ${message.location.longitude})`);
+    console.log(`${new Date()} Train (head code ${message.headCode}) is at location: (${message.location.latitude}, ${message.location.longitude})`);
   });
 });
 
