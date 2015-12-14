@@ -14,7 +14,7 @@ function initMap() {
     trainCoords = {{{json this}}}
 
     trainPath = new google.maps.Polyline({
-      path: flightPlanCoordinates,
+      path: trainCoords,
       geodesic: true,
       strokeColor: '#'+Math.floor(Math.random()*16777215).toString(16),
       strokeOpacity: 1.0,
