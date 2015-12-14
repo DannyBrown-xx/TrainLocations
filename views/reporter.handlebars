@@ -9,8 +9,6 @@
   var headCode = prompt("Enter train headcode:", "1X01");
   document.getElementById('message').style.display = 'block';
 
-  setInterval(reportLocation, 5000);
-
   socket.on('error', function() {
     document.getElementById('message').innerHTML = 'Encountered an error';
     addToEventLog('Encountered an error');
@@ -20,9 +18,9 @@
     document.getElementById('message').innerHTML = 'Disconnected';
     addToEventLog('Disconnected');
   });
-
+  
   function reportLocation() {
-    navigator.geolocation.getCurrentPosition(function(position) {
+    navigator.geolocation.watchPosition(function(position) {
       socket.emit('location-update', {
         'headCode' : headCode,
         'location' : {
@@ -31,7 +29,7 @@
         }
       });
 
-      addToEventLog('Sending location: (' + position.coords.latitude + ',' + position.coords.longitude + ')');
+      addToEventLog('Sending updated location: (' + position.coords.latitude + ',' + position.coords.longitude + ')');
     });
     document.getElementById('message').innerHTML = 'Sending location';
     console.log('Sending location');
@@ -43,4 +41,6 @@
     li.appendChild(document.createTextNode(new Date() + ' ' + eventText));
     ul.appendChild(li);
   }
+  
+  reportLocation();
 </script>
